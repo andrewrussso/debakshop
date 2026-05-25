@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>aespa - DAEBAK Shop | K-pop</title>
+    <link rel="icon" type="image/png" href="images/0A8D8AEE-96B7-41DC-AFDB-7E716FF7AD9C (1).png">
+    <style>
+        @font-face {
+            font-family: 'DxsRocoPixel';
+            src: url('fonts/dxs-roco-pixel.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'VcrosdmonorusVHS';
+            src: url('fonts/vcrosdmonorus_vhsicons.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'SevenExEightPixel';
+            src: url('fonts/SevenExEightPixel-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            font-family: 'VcrosdmonorusVHS', monospace;
+            color: #ffffff;
+            line-height: 1.5;
+            overflow-x: hidden;
+            min-width: 1300px;
+        }
+
+        .site-wrapper {
+            position: relative;
+            width: 1300px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+
+        .breadcrumbs {
+            position: absolute;
+            top: 350px;
+            left: 115px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 30;
+            font-family: 'VcrosdmonorusVHS', monospace;
+            font-size: 20px;
+            white-space: nowrap;
+        }
+
+        .breadcrumb-link {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .breadcrumb-link:hover {
+            color: #818181;
+        }
+
+        .breadcrumb-separator {
+            color: #ffffff;
+            cursor: default;
+            user-select: none;
+        }
+
+        .top-bar {
+            position: absolute;
+            top: 93px;
+            left: 110px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .top-container {
+            width: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-wrapper {
+            width: 1185px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 12px 20px;
+            background-color: #1a1a1a;
+            border: 1px solid #3a3a3a;
+            border-radius: 0px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            height: 46px;
+            font-family: 'VcrosdmonorusVHS', monospace;
+        }
+
+        .search-bar:focus {
+            border-color: #ff77aa;
+            background-color: #222;
+        }
+
+        .search-bar::placeholder {
+            color: #888;
+        }
+
+        .login-btn {
+            background-color: transparent;
+            color: #ffffff;
+            border: none;
+            padding: 0;
+            font-weight: normal;
+            font-size: 1rem;
+            cursor: pointer;
+            white-space: normal;
+            text-align: left;
+            line-height: 1.3;
+            font-family: 'SevenExEightPixel', monospace;
+            transition: color 0.3s ease;
+            min-width: 80px;
+        }
+
+        .login-btn:hover {
+            color: #FF35CD;
+        }
+
+        .nav-menu-bar {
+            position: absolute;
+            top: 233px;
+            left: 110px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .nav-container {
+            width: 1185px;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            list-style: none;
+            width: 100%;
+        }
+
+        .nav-links li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 20px;
+            padding: 8px 5px;
+            white-space: nowrap;
+            font-family: 'VcrosdmonorusVHS', monospace;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #FF35CD;
+        }
+
+        .sale-link {
+            color: #ffffff !important;
+            font-weight: bold;
+        }
+
+        .sale-link:hover {
+            color: #FF35CD !important;
+        }
+
+        .logo-link {
+            position: absolute;
+            top: 42px;
+            left: -205px;
+            width: 289px;
+            height: 362px;
+            display: block;
+            z-index: 200;
+            cursor: pointer;
+        }
+
+        .logo-gray-block {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            overflow: hidden;
+        }
+        
+        .logo-gray-block img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .big-gray-block {
+            position: absolute;
+            top: 524.96px;
+            width: 1300px;
+            height: 500px;
+            background-color: #000000;
+            overflow: hidden;
+        }
+        
+        .big-gray-block img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .brand-block {
+            position: absolute;
+            top: 385px;
+            left: 0px;
+            text-align: right;
+            z-index: 20;
+        }
+
+        .brand-title {
+            font-size: 96px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #1FD73B;
+            font-family: 'DxsRocoPixel', monospace;
+            text-shadow: 
+                6px 0 0 #000000,
+                0 6px 0 #000000,
+                -6px 0 0 #000000,
+                0 -6px 0 #000000,
+                6px 6px 0 #000000,
+                -6px -6px 0 #000000,
+                6px -6px 0 #000000,
+                -6px 6px 0 #000000;
+            line-height: 131%;
+        }
+
+        .products-grid-4x4 {
+            display: grid;
+            grid-template-columns: repeat(4, 310px);
+            gap: 20px;
+            justify-content: start;
+            margin-top: 20px;
+        }
+
+        .catalog-section {
+            position: absolute;
+            top: 1114.96px;
+            left: 0;
+            width: 100%;
+        }
+
+        .products-grid-catalog {
+            display: grid;
+            grid-template-columns: repeat(4, 310px);
+            gap: 20px;
+            justify-content: start;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .pagination-item {
+            width: 88px;
+            height: 88px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-family: 'VcrosdmonorusVHS', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: #000000;
+            color: #ffffff;
+            border: none;
+        }
+
+        .pagination-item.active {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .pagination-item:not(.active):hover {
+            background-color: #333333;
+        }
+
+        .pagination-item.arrow:hover {
+            background-color: #000000;
+        }
+
+        .section-title {
+            color: #ffffff;
+            font-size: 48px;
+            font-family: 'DxsRocoPixel', monospace;
+            margin-bottom: 20px;
+        }
+
+        .product-card-wrapper {
+            position: relative;
+            width: 310px;
+            height: 410px;
+        }
+
+        .product-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 310px;
+            height: 410px;
+            background-color: #D5D5D5;
+        }
+
+        .product-color-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 310px;
+            height: 410px;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .product-card-wrapper:hover .product-color-layer {
+            opacity: 0.65;
+        }
+
+        .product-image {
+            position: relative;
+            width: 277px;
+            height: 277px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-bottom: 16px;
+            z-index: 2;
+        }
+
+        .product-info {
+            position: relative;
+            text-align: left;
+            width: 100%;
+            padding: 0 8px;
+            z-index: 2;
+        }
+
+        .product-name {
+            font-weight: 500;
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #000000;
+            line-height: 1.3;
+            font-family: 'VcrosdmonorusVHS', monospace;
+        }
+
+        .price {
+            color: #000000;
+            font-weight: bold;
+            font-size: 16px;
+            display: block;
+            font-family: 'SevenExEightPixel', monospace;
+        }
+
+        .product-content {
+            position: relative;
+            width: 310px;
+            height: 410px;
+            padding: 16.5px;
+            display: flex;
+            flex-direction: column;
+            z-index: 2;
+        }
+
+        .product-card-link {
+            text-decoration: none;
+            display: block;
+            width: 310px;
+            height: 410px;
+        }
+
+        .star-rectangle-1 {
+            position: absolute;
+            left: -214px;
+            top: 1358px;
+            width: 272px;
+            height: 267px;
+            background-image: url('images/звезда 1.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star-rectangle-2 {
+            position: absolute;
+            left: 1202px;
+            top: 2223px;
+            width: 326px;
+            height: 276px;
+            background-image: url('images/звезда 2.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .catalog-color-1 { background-color: #56636A; }
+        .catalog-color-2 { background-color: #D2BA70; }
+        .catalog-color-3 { background-color: #FF5800; }
+        .catalog-color-4 { background-color: #F8009D ; }
+        .catalog-color-5 { background-color: #691ED7; }
+        .catalog-color-6 { background-color: #CA4E1F; }
+        .catalog-color-7 { background-color: #0106FE; }
+        .catalog-color-8 { background-color: #000000; }
+        .catalog-color-9 { background-color: #C4F08B; }
+        .catalog-color-10 { background-color: #567B90; }
+        .catalog-color-11 { background-color: #EBE87A; }
+        .catalog-color-12 { background-color: #D59EA8; }
+        .catalog-color-13 { background-color: #EE1B24; }
+        .catalog-color-14 { background-color: #EE1B24; }
+        .catalog-color-15 { background-color: #EE1B24; }
+        .catalog-color-16 { background-color: #53B356; }
+
+        .new-color-1 { background-color: #CE0408; }
+        .new-color-2 { background-color: #000000; }
+        .new-color-3 { background-color: #000000; }
+        .new-color-4 { background-color: #000000; }
+        .new-color-5 { background-color: #686E7B; }
+        .new-color-6 { background-color: #867B5C; }
+        .new-color-7 { background-color: #AA4D14; }
+        .new-color-8 { background-color: #977D70; }
+
+        .catalog-image-1 { background-image: url('images/IMG_3932.jpg'); }
+        .catalog-image-2 { background-image: url('images/IMG_3933.jpg'); }
+        .catalog-image-3 { background-image: url('images/2435C03E-9406-4643-A71C-D538873919E1.webp'); }
+        .catalog-image-4 { background-image: url('images/79EE4E06-408E-46F0-AB02-34464B634E6A.webp'); }
+        .catalog-image-5 { background-image: url('images/E57D7F6B-4332-47EE-B9EB-112600C8E505.webp'); }
+        .catalog-image-6 { background-image: url('images/971A0FB8-D51B-4BA7-93BE-C4D0644F3892.webp'); }
+        .catalog-image-7 { background-image: url('images/549FD114-A721-42C9-8591-19A784852293.webp'); }
+        .catalog-image-8 { background-image: url('images/82DE2594-14B4-4EFE-9593-0FAA0602AD3B.webp'); }
+        .catalog-image-9 { background-image: url('images/009008001177.webp'); }
+        .catalog-image-10 { background-image: url('images/009008001176.webp'); }
+        .catalog-image-11 { background-image: url('images/009001026164.webp'); }
+        .catalog-image-12 { background-image: url('images/IMG_3931.webp'); }
+        .catalog-image-13 { background-image: url('images/IMG_3924.webp'); }
+        .catalog-image-14 { background-image: url('images/IMG_3926.webp'); }
+        .catalog-image-15 { background-image: url('images/IMG_3918.webp'); }
+        .catalog-image-16 { background-image: url('images/IMG_6869.jpg'); }
+
+        .product-image-3 { background-image: url('images/large_tnINxq.webp'); }
+        .product-image-4 { background-image: url('images/large_qkIRjf.webp'); }
+        .product-image-5 { background-image: url('images/large_gM5Nw3.webp'); }
+        .product-image-6 { background-image: url('images/large_9WOldi.webp'); }
+        .product-image-7 { background-image: url('images/large_xNnRYk-2.webp'); }
+        .product-image-8 { background-image: url('images/large_98TvTh.webp'); }
+        .product-image-9 { background-image: url('images/large_0lz4n6.webp'); }
+        .product-image-10 { background-image: url('images/large_Снимок_экрана_2025-11-18_в_4.52.58_PM.webp'); }
+
+        .view-all-center {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0 40px 0;
+        }
+
+        .view-all-center-link {
+            font-size: 16px;
+            color: #ffffff;
+            text-decoration: none;
+            font-family: 'VcrosdmonorusVHS', monospace;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+            z-index: 101;
+        }
+
+        .view-all-center-link:hover {
+            color: #FF35CD !important;
+        }
+
+        .footer-section {
+            position: absolute;
+            top: 4110px;
+            left: 0;
+            width: 100%;
+        }
+
+        .footer-bottom {
+            position: absolute;
+            top: 100px;
+            width: 1300px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+            padding-top: 20px;
+            z-index: 100;
+        }
+
+        .support-block {
+            flex: 1;
+        }
+
+        .support-text {
+            color: #000000;
+            font-size: 24px;
+            line-height: 40px;
+            margin-bottom: 8px;
+            font-family: 'VcrosdmonorusVHS', monospace;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .footer-links a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 24px;
+            white-space: nowrap;
+            font-family: 'VcrosdmonorusVHS', monospace;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #FF35CD;
+        }
+
+        .footer-image-container {
+            position: absolute;
+            top: 3970px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1920px;
+            z-index: 1;
+            background-color: transparent;
+        }
+        
+        .footer-image {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .line-01 {
+            position: absolute;
+            top: 3057px;
+            left: 0px;
+            width: 1300px;
+            height: 6px;
+            background-color: #ffffff;
+            z-index: 9;
+        }
+
+        .new-items-section {
+            position: absolute;
+            top: 3113px;
+            left: 0;
+            width: 100%;
+        }
+
+        .gray-block-1058, .gray-block-530x509, .new-gray-square, .info-block, .catalog-header {
+            display: none;
+        }
+
+        .preorder-title, .aespa-sub, .preorder-card-1-wrapper, .preorder-card-2-wrapper, .view-all-wrapper {
+            display: none;
+        }
+
+        @media (max-width: 1600px) and (min-width: 1300px) {
+            body {
+                overflow-x: auto;
+            }
+            .site-wrapper {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="site-wrapper">
+        <div class="star-rectangle-1"></div>
+        <div class="star-rectangle-2"></div>
+
+        <a href="сайт русов.html" class="logo-link">
+            <div class="logo-gray-block">
+                <img src="images/лого.png" alt="Logo">
+            </div>
+        </a>
+
+        <div class="top-bar">
+            <div class="top-container">
+                <div class="search-wrapper">
+                    <input type="text" class="search-bar" placeholder="Поиск по товарам, исполнителям...">
+                </div>
+                <button class="login-btn">ЛИЧНЫЙ<br>КАБИНЕТ</button>
+            </div>
+        </div>
+
+        <div class="nav-menu-bar">
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="#" class="sale-link">SALE</a></li>
+                    <li><a href="#">Найти исполнителя ⌄</a></li>
+                    <li><a href="#">Фотокарты ⌄</a></li>
+                    <li><a href="#">Журналы ⌄</a></li>
+                    <li><a href="#">Лайтстики ⌄</a></li>
+                    <li><a href="#">Сертификаты</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="breadcrumbs">
+            <a href="сайт русов.html" class="breadcrumb-link">Главная</a>
+            <span class="breadcrumb-separator">﹥</span>
+            <span class="breadcrumb-link">Найти исполнителя</span>
+            <span class="breadcrumb-separator">﹥</span>
+            <span class="breadcrumb-link">Женские группы</span>
+            <span class="breadcrumb-separator">﹥</span>
+            <span class="breadcrumb-link">aespa</span>
+        </div>
+
+        <div class="big-gray-block">
+            <img src="images/aespa_banner.png" alt="Main banner">
+        </div>
+
+        <div class="brand-block">
+            <div class="brand-title">AESPA</div>
+        </div>
+
+        <div class="catalog-section">
+            <div class="products-grid-catalog">
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer catalog-color-1"></div>
+                    <div class="product-content">
+                        <div class="product-image catalog-image-1"></div>
+                        <div class="product-info">
+                            <div class="product-name">Альбом aespa - Armageddon (Zine Ver.)</div>
+                            <div class="price">2 350 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer catalog-color-2"></div>
+                    <div class="product-content">
+                        <div class="product-image catalog-image-2"></div>
+                        <div class="product-info">
+                            <div class="product-name">Альбом aespa - Armageddon (Poster Ver.)</div>
+                            <div class="price">2 290 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer catalog-color-3"></div>
+                    <div class="product-content">
+                        <div class="product-image catalog-image-3"></div>
+                        <div class="product-info">
+                            <div class="product-name">Альбом aespa - Rich Man (BURST Ver.)</div>
+                            <div class="price">1 750 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer catalog-color-4"></div>
+                    <div class="product-content">
+                        <div class="product-image catalog-image-4"></div>
+                        <div class="product-info">
+                            <div class="product-name">Альбом aespa - Rich Man (RICH MAN BAG Ver.)</div>
+                            <div class="price">3 699  руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer catalog-color-5"></div>
+                    <div class="product-content">
+                        <div class="product-image catalog-image-5"></div>
+                        <div class="product-info">
+                            <div class="product-name">Альбом aespa - Rich Man (ENERGY Ver.)</div>
+                            <div class="price">1 890 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer catalog-color-6"></div>
+                    <div class="product-content">
+                        <div class="product-image catalog-image-6"></div>
+                        <div class="product-info">
+                            <div class="product-name">Альбом aespa - Dirty Work (Dirty Worker Ver.)</div>
+                            <div class="price">2 290 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer catalog-color-7"></div>
+                    <div class="product-content">
+                        <div class="product-image catalog-image-7"></div>
+                        <div class="product-info">
+                            <div class="product-name">Альбом aespa - 5th Mini Album [Whiplash] (SPEED Ver.)</div>
+                            <div class="price">2 490 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer catalog-color-8"></div>
+                    <div class="product-content">
+                        <div class="product-image catalog-image-8"></div>
+                        <div class="product-info">
+                            <div class="product-name">Альбом aespa - 5th Mini Album [Whiplash] (BEAT Ver.)</div>
+                            <div class="price">2 550 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer catalog-color-9"></div>
+                    <div class="product-content">
+                        <div class="product-image catalog-image-9"></div>
+                        <div class="product-info">
+                            <div class="product-name">Винил aespa - 5th Mini Album [Whiplash] (LP Ver.)</div>
+                            <div class="price">2 250 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer catalog-color-10"></div>
+                    <div class="product-content">
+                        <div class="product-image catalog-image-10"></div>
+                        <div class="product-info">
+                            <div class="product-name">Винил aespa - Armageddon (LP Ver.)</div>
+                            <div class="price">2 250 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer catalog-color-11"></div>
+                    <div class="product-content">
+                        <div class="product-image catalog-image-11"></div>
+                        <div class="product-info">
+                            <div class="product-name">Альбом aespa - Armageddon (Superbeing Ver.)</div>
+                            <div class="price">2 850 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="сайт русов_3 страница.html" class="product-card-link">
+                    <div class="product-card-wrapper">
+                        <div class="product-bg"></div>
+                        <div class="product-color-layer catalog-color-12"></div>
+                        <div class="product-content">
+                            <div class="product-image catalog-image-12"></div>
+                            <div class="product-info">
+                                <div class="product-name">Альбом aespa - Armageddon (MY Power Ver.)</div>
+                                <div class="price">2 650 руб</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer catalog-color-13"></div>
+                    <div class="product-content">
+                        <div class="product-image catalog-image-13"></div>
+                        <div class="product-info">
+                            <div class="product-name">Альбом aespa - Drama (Giant Ver.)</div>
+                            <div class="price">1 700 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer catalog-color-14"></div>
+                    <div class="product-content">
+                        <div class="product-image catalog-image-14"></div>
+                        <div class="product-info">
+                            <div class="product-name">Альбом aespa - Drama (Sequence Ver.)</div>
+                            <div class="price">2 290 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer catalog-color-15"></div>
+                    <div class="product-content">
+                        <div class="product-image catalog-image-15"></div>
+                        <div class="product-info">
+                            <div class="product-name">Альбом aespa - Drama (Scene Ver.)</div>
+                            <div class="price">1 950 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer catalog-color-16"></div>
+                    <div class="product-content">
+                        <div class="product-image catalog-image-16"></div>
+                        <div class="product-info">
+                            <div class="product-name">Альбом aespa - MY WORLD (Intro Ver.) (Random Ver.)</div>
+                            <div class="price">2 150 руб</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination" id="pagination">
+                <div class="pagination-item active" data-page="1" onclick="setActivePage(this, 1)">1</div>
+                <div class="pagination-item" data-page="2" onclick="setActivePage(this, 2)">2</div>
+                <div class="pagination-item arrow" onclick="togglePage()">></div>
+            </div>
+        </div>
+
+        <div class="line-01"></div>
+
+        <div class="new-items-section">
+            <div class="section-title">НОВИНКИ</div>
+            <div class="products-grid-4x4">
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer new-color-1"></div>
+                    <div class="product-content">
+                        <div class="product-image product-image-3"></div>
+                        <div class="product-info">
+                            <div class="product-name">Stray Kids - World Tour (Доминанта SEDULJ)</div>
+                            <div class="price">6 390 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer new-color-2"></div>
+                    <div class="product-content">
+                        <div class="product-image product-image-4"></div>
+                        <div class="product-info">
+                            <div class="product-name">Stray Kids - World Tour (Доминанта SEDULJ)</div>
+                            <div class="price">5 390 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer new-color-3"></div>
+                    <div class="product-content">
+                        <div class="product-image product-image-5"></div>
+                        <div class="product-info">
+                            <div class="product-name">Stray Kids - World Tour (Доминанта SEDUL)</div>
+                            <div class="price">5 390 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer new-color-4"></div>
+                    <div class="product-content">
+                        <div class="product-image product-image-6"></div>
+                        <div class="product-info">
+                            <div class="product-name">Stray Kids - World Tour (SPECIAL Ver.)</div>
+                            <div class="price">3 590 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer new-color-5"></div>
+                    <div class="product-content">
+                        <div class="product-image product-image-7"></div>
+                        <div class="product-info">
+                            <div class="product-name">Stray Kids - World Tour (SPECIAL Ver.)</div>
+                            <div class="price">2 950 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer new-color-6"></div>
+                    <div class="product-content">
+                        <div class="product-image product-image-8"></div>
+                        <div class="product-info">
+                            <div class="product-name">Набор ENHYPEN - 2026 SEASON'S GREETINGS</div>
+                            <div class="price">5 920 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer new-color-7"></div>
+                    <div class="product-content">
+                        <div class="product-image product-image-9"></div>
+                        <div class="product-info">
+                            <div class="product-name">Набор KATSEYE - 2026 SEASON'S GREETINGS</div>
+                            <div class="price">5 350 руб</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-wrapper">
+                    <div class="product-bg"></div>
+                    <div class="product-color-layer new-color-8"></div>
+                    <div class="product-content">
+                        <div class="product-image product-image-10"></div>
+                        <div class="product-info">
+                            <div class="product-name">Набор ENHYPEN - 2026 GGU GGU BOOK</div>
+                            <div class="price">2 950 руб</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="view-all-center">
+                <a href="javascript:void(0);" class="view-all-center-link">Смотреть все →</a>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <div class="footer-bottom">
+                <div class="support-block">
+                    <div class="support-text">
+                        <p>Что-то не нашли? Позвоните в поддержку!</p>
+                        <p><u>+7 905 346 76 *5</u><br>
+                        <br>Поддержка работает круглосуточно с 12:00 по 22:00</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="#">О нас</a>
+                    <a href="#">Доставка и оплата</a>
+                    <a href="#">Контакты</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-image-container">
+        <img src="images/футер.png" alt="Footer image" class="footer-image">
+    </div>
+
+    <script>
+        let currentPage = 1;
+        
+        function setActivePage(element, page) {
+            const allDigitButtons = document.querySelectorAll('.pagination-item:not(.arrow)');
+            allDigitButtons.forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            currentPage = page;
+        }
+        
+        function togglePage() {
+            if (currentPage === 1) {
+                currentPage = 2;
+                const buttons = document.querySelectorAll('.pagination-item:not(.arrow)');
+                buttons.forEach(btn => btn.classList.remove('active'));
+                if (buttons[1]) buttons[1].classList.add('active');
+            } else {
+                currentPage = 1;
+                const buttons = document.querySelectorAll('.pagination-item:not(.arrow)');
+                buttons.forEach(btn => btn.classList.remove('active'));
+                if (buttons[0]) buttons[0].classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
